@@ -33,7 +33,7 @@
                         <th class="character-name" >Party</th>
                         <th>Stats</th>
                     </tr>
-                    <tr>
+                    <tr class="underline-row">
                         <td>
                             <!-- Character's model -->
                             <p class="character-name" id="avatar-sheet" th:text="${characterOne.alteredName}"> </p>
@@ -49,7 +49,7 @@
                             <span class="xp">XP: </span><span class="xp" th:text="${characterOne.xp}"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="underline-row">
                         <td>
                             <p  class="character-name" id="friend-sheet" th:text="${characterTwo.alteredName}"> </p>
                             <img th:src="@{'resources/images/animations/' + ${characterTwo.model} + '.gif'}" class="portrait" alt="Companion">
@@ -61,7 +61,7 @@
                             <span class="xp">XP: </span><span class="xp" th:text="${characterTwo.xp}"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="underline-row">
                         <td>
                             <p  class="character-name" id="wizard-sheet" th:text="${characterThree.alteredName}"> </p>
                             <img th:src="@{resources/images/animations/modelWizard.gif}" class="portrait" alt="Wizard">
@@ -73,7 +73,7 @@
                             <span class="xp">XP: </span><span class="xp" th:text="${characterThree.xp}"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="underline-row">
                         <td>
                             <p  class="character-name" id="dog-sheet" th:text="${characterFour.alteredName}"> </p>
                             <img th:src="@{resources/images/animations/modelHound.gif}" class="portrait" alt="Dog">
@@ -86,7 +86,6 @@
                         </td>
                     </tr>
                 </table>
-                <a th:href="@{/inventory}">Open Inventory</a>
             </div>
             <!-- End of Table HTML -->
             <!-- Beginning of Form HTML -->
@@ -157,13 +156,17 @@
                             <tr th:each = "item: ${shop}">
                                 <td class="shop-price" th:text = "${item.price} + 'g'"></td>
                                 <td class="shop-item" th:text = "${item.name}"></td>
-                                <td><button type="button" class="submit-button buy-button" value="0">Buy</button></td>
+                                <td><form action="#" th:action="@{'/camp/{id}'(id=${item.item_id})}" th:method="put" >
+                                    <button type="submit" class="submit-button buy-button">
+                                        Buy
+                                    </button>
+                                </form></td>
                             </tr>
-
                         </table>
-                        <!-- Button that forces table to regenerate values -->
-                        <div class="center padding">
-                            <button type="button" class="submit-button center" onclick=createShop()>Refresh Store</button>
+
+                        <div class="center">
+                            <a id="inventory-link" th:href="@{/inventory}">Open Inventory</a><br>
+                            <p th:text="'Your Total Gold: ' + ${characterOne.gold} + 'g'" style="margin: 6px;"></p>
                         </div>
 
                         <div class="nav-bar">

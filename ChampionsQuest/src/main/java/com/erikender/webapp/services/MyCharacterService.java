@@ -121,6 +121,19 @@ public class MyCharacterService {
         character.setGold(charGold + itemPrice);
 
         repo.save(character);
+    }
 
+    public boolean decreaseCharWealth(MyCharacter character, Item item) {
+        int charGold = character.getGold();
+        int itemPrice = item.getPrice();
+
+        if (charGold >= itemPrice) {
+            character.setGold(charGold - itemPrice);
+            return true;
+        }
+        else {
+            System.out.println("Not enough gold!");
+            return false;
+        }
     }
 }

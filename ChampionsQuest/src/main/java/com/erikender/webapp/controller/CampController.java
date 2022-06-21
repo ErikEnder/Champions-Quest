@@ -4,14 +4,17 @@ import com.erikender.webapp.dto.FormDto;
 import com.erikender.webapp.repository.MyCharacterRepository;
 import com.erikender.webapp.repository.ShopRepository;
 import com.erikender.webapp.repository.UserRepository;
+import com.erikender.webapp.services.InventoryService;
 import com.erikender.webapp.services.MyUserDetailsService;
 import com.erikender.webapp.services.ItemService;
 import com.erikender.webapp.services.MyCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 
 @Controller
@@ -29,6 +32,9 @@ public class CampController {
     MyCharacterService characterService;
     @Autowired
     ItemService itemService;
+
+    @Autowired
+    InventoryService inventoryService;
 
 
     @GetMapping("/camp")
@@ -60,5 +66,11 @@ public class CampController {
         return modelAndView(model);
     }
 
+    @PutMapping(value = "/camp/{id}")
+    public String addItem(@PathVariable int id) {
+        inventoryService.buyItem(id);
+
+        return "redirect:/camp";
+    }
 
 }

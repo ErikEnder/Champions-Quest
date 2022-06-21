@@ -237,6 +237,7 @@ a:visited {
 
 .party-table {
     text-align: center;
+    border-collapse: collapse;
     border: 5px solid black;
     margin-top: 20px;
     padding: 1em 1em 0 1em;
@@ -317,6 +318,30 @@ a:visited {
     text-shadow: 1px 1px #690500ff;
 }
 
+.force-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.inventory-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 80%;
+    left: 10%;
+    border: solid 5px black;
+}
+
+#inventory-link {
+    margin-top: 10px;
+    color: gray;
+    text-shadow: 2px 2px black;
+}
+
+#inventory-link:hover {
+    text-shadow: 2px 2px #690500ff;
+}
+
 /** #################################################### **/
 /** Inventory Styling **/
 .inv-container {
@@ -373,7 +398,7 @@ a:visited {
     font-size: 0.85em;
 }
 
-.item-row {
+.underline-row {
     border-bottom: solid black 2px;
 }
 

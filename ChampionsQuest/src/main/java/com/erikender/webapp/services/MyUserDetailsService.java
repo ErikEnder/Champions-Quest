@@ -29,7 +29,6 @@ public class MyUserDetailsService implements UserDetailsService {
     public User getLoggedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
-        System.out.println(currentPrincipalName);
         User user = userRepository.findByEmail(currentPrincipalName);
         return user;
     }

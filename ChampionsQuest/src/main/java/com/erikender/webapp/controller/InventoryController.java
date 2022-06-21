@@ -27,8 +27,8 @@ public class InventoryController {
         return "inventory";
     }
 
-    @PostMapping(value="/sell_item")
-    public String deleteItem(int id, Model model) {
+    @RequestMapping(value = "/inventory/delete/{id}", method = RequestMethod.DELETE)
+    public String deleteItem(@PathVariable int id, Model model) {
         inventoryService.sellItem(id);
 
         return inventoryPage(model);
