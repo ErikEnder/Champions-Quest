@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Connects to the Google Fonts API to import a font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/styles/styles.css}">
+    </head>
+    <body>
+        <!-- Page largely resembles Login in both layout and styling -->
+        <div class="form-container">
+            <div>
+                <img th:src="@{/resources/images/Torch_Gif.gif}" alt="Flickering Torch">
+            </div>
+            <div class="form-holder">
+                <form class="form-style" id="submission-form">
+                    <div>
+                        <h3>Contact Me:</h3>
+                    </div>
+                    <div class="form-div">
+                        <label for="email">Email: </label><br>
+                        <input style="height: 20px; border: 2px solid black;" type="text" id="email" name="email" placeholder="name@host.com" required><br>
+                    </div>
+                    <!-- Collects user's age using a dropdown box -->
+                    <div class="form-div">
+                        <label for="age">Age: </label><br>
+                        <select style="height: 20px; border: 2px solid black;" name="age" id="age">
+                            <option value="minor">< 18</option>
+                            <option value="zoomer">18 - 24</option>
+                            <option value="millennial">25 - 39</option>
+                            <option value="older">40+</option>
+                        </select>
+                    </div>
+
+                    <!-- Allows user to input message to send -->
+                    <div class="form-div">
+                        <label for="message">Enter personalized message:</label><br><br>
+                        <textarea style="border: 2px solid black;" name="message" id="message" cols="30" rows="10">EX: Hey Erik, you're so cool and talented.  I love this amazing website!</textarea>
+                    </div>
+                    <div class="form-div">
+                        <button type="submit" form="submission-form" onclick="justKidding()" class="submit-button" value="Submit">Submit Information <img class="submit-icon" th:src="@{resources/images/sword icon.png}" alt="Sword Picture"></button>
+                    </div>
+
+
+                    <div class="nav-bar">
+                        <div><a th:href="@{/camp}" class="nav-link">Go to Camp</a></div>
+                        <div><a th:href="@{/map}" class="nav-link">View Map</a></div>
+                        <div><a th:href="@{/logout}" class="nav-link">Logout</a></div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <img th:src="@{/resources/images/Torch_Gif.gif}" alt="Flickering Torch">
+            </div>
+        </div>
+        
+        <script th:src="@{resources/scripts/scripts.js}" async defer></script>
+    </body>
+</html>

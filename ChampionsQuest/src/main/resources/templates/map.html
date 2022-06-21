@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Connects to the Google Fonts API to import a font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/styles/styles.css}">
+    </head>
+    <body>
+        <!-- Container to allow for Flexbox usage across page-->
+        <div class="container">
+
+            <!-- The map on the "front page" -->
+            <div id="map-page">
+                <img class="overworld" th:src="@{/resources/images/map page.jpg}" alt="Overworld Map">
+            </div>
+            <!-- Container holding the right-hand side content allowing for Flexbox formatting-->
+            <div class="info-container">
+                <!-- Class styling the header -->
+                <div class="header-cont">
+                    <h1 th:text="'Welcome, ' + ${characterOne.alteredName}"></h1>
+                </div>
+                <!-- Container for "quest guide"/story -->
+                <div class="quest-dialogue">
+                    <p>Your camp is set, and your trials await.</p>
+                    <p>Something has gone amiss within the King's castle, and a horde of otherworldly horrors have wasted no time
+                        desecrating the kingdom.</p>
+                    <p>Accompanied only by your blade and wits, and perhaps a companion or two, you must fight back the terrible
+                        scourge that has encompassed the land and retake the kingdom's throne.  Who knows?  Perhaps you will be the one
+                        to sit upon it in due time.
+                    </p>
+                    <!-- Navigation Bar -->
+                    <div class="nav-bar">
+                        <div><a th:href="@{/camp}" class="nav-link">Go to Camp</a></div>
+                        <div><a th:href="@{/contact}" class="nav-link">Contact Form</a></div>
+                        <div><a th:href="@{/logout}" class="nav-link">Logout</a></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </body>
+</html>

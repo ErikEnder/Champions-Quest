@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/styles/styles.css}">
+</head>
+<body>
+<div class="inv-container">
+    <div class="inv-center">
+        <div class="inv-header">
+            <h1 th:text="${characterOne.alteredName} + '\'s Inventory'"></h1>
+            <p th:text="'Your Total Gold: ' + ${characterOne.gold} + 'g'"></p>
+        </div>
+    </div>
+
+    <div class="inv-center">
+        <div>
+            <table class="inv-display">
+                <tbody class="inv-body">
+                    <tr class="item-row">
+                        <th class="item-head">Item</th>
+                        <th class="item-head">Attack</th>
+                        <th class="item-head">Defense</th>
+                        <th class="item-head">Value</th>
+                    </tr>
+                    <tr class="item-row" th:each = "item: ${inventory}">
+                        <td class="item item-name" th:text = "${item.name}"></td>
+                        <td class="item" th:text = "${item.attack}"></td>
+                        <td class="item" th:text = "${item.defense}"></td>
+                        <td class="item" th:text = "${item.price} + 'g'"></td>
+                        <td class="item" th:text = "${item.desc}"></td>
+                        <td><form action="#" th:action="@{'/inventory/delete/{id}'(id=${item.item_id})}" th:method="delete" >
+                            <button type="submit" class="submit-button buy-button">
+                                Sell
+                            </button>
+                        </form></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login Page - Champion's Quest</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Connects to the Google Fonts API to import a font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/styles/styles.css}">
+    </head>
+    <body>
+        <!-- Holds the form and torches -->
+        <div class="form-container">
+            <div>
+                <img th:src="@{/resources/images/Torch_Gif.gif}" alt="Flickering Torch">
+            </div>
+            <!-- Holds specifically the form -->
+            <div class="form-holder">
+                <!-- Styles the form -->
+                <form th:action="@{/login}" method="post" class="form-style" id="login-form">
+                    <div>
+                        <h2>
+                            <a th:href="@{/signup}" id="sign-up-nav">Sign up</a> <br>
+                            or <br> Login Here
+                        </h2>
+                    </div>
+                    <div class="form-div">
+                        <!-- Input accepts user email to parse for ReGex -->
+                        <label for="email">Email: </label><br>
+                        <input type="email" id="email" name="email" placeholder="name@host.com" style="height: 20px; border: 2px solid black;" required><br>
+                    </div>
+                    <div class="form-div">
+                        <!-- Input accepts user password -->
+                        <label for="password">Password: </label><br>
+                        <input type="password" id="password" name="password" style="height: 20px; border: 2px solid black;" required>
+                    </div>
+                    <div class="form-div">
+                        <!-- Button calls verifyEmail to compare the inputted email and password -->
+                        <button type="submit" value="Login" class="submit-button">Take Up Arms <img class="submit-icon" th:src="@{resources/images/sword icon.png}" alt="Sword Picture"></button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <img th:src="@{/resources/images/Torch_Gif.gif}" alt="Flickering Torch">
+            </div>
+        </div>
+        
+        <script th:src="@{/resources/scripts/scripts.js}" async defer></script>
+    </body>
+</html>

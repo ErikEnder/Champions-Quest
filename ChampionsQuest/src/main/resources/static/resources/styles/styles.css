@@ -1,0 +1,379 @@
+/* Color Palette
+#################################
+--green-pigment: #08a045ff;
+--black-olive: #3b413cff;
+--gray: #878786;
+--blood-red: #690500ff;
+--flax: #e9d985ff; 
+#################################
+*/
+
+/** Generic Styling CSS **/
+body {
+    background-color: #3b413cff;
+    margin: 0;
+    color: white;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: #690500ff;
+    text-shadow: 3px 3px #08a045ff;
+}
+
+
+a:visited {
+    color: #e9d985ff;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.center {
+    text-align: center;
+}
+
+.padding {
+    padding: 20px;
+}
+
+/** ################################################### **/
+/** Slightly Generic Class Styling **/
+.info-container {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    justify-content: flex-start;
+    
+}
+
+.header-cont {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    background-color: #878786;
+    border: solid black 15px;
+    text-shadow: 3px 3px black;
+}
+
+.quest-dialogue {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-right: 50px;
+    padding: 20px;
+
+    background-color: #e9d985ff;
+    border: solid black 5px;
+    color: black;
+}
+
+/** ############################################### **/
+/** Map Styling **/
+#map-page {
+    display: flex;
+    position: relative;
+    left: 0;
+    height: 99.5vh;
+    margin: 0;
+    padding: 0;
+}
+
+.overworld {
+    width: 90%;
+    height: 100%;
+    
+}
+
+/** ######################################## **/
+/** Submit Button CSS **/
+/** Styling sourced from https://getcssscan.com/css-buttons-examples **/
+.submit-button {
+  appearance: button;
+  background-color: #4f4d4d;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 50%;
+}
+
+.submit-button:after {
+  background-clip: padding-box;
+  background-color: #878786;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.submit-button:main,
+.submit-button:focus {
+  user-select: auto;
+}
+
+.submit-button:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.submit-button:disabled {
+  cursor: auto;
+}
+
+.submit-button:active {
+    transform: translateY(2px);
+    background-color: black;
+    border-width: 0 0 2px;
+    border-radius: 17px;
+}
+
+.buy-button {
+    width: 100px;
+}
+
+.submit-icon {
+    height: 25px;
+    width: 25px;
+}
+
+/** #################################### **/
+/** Form Styling CSS **/
+.form-container {
+    display: flex;
+    justify-content: center;
+
+
+    height: 100vh;
+}
+
+.form-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#login-form {
+    display: flex;
+}
+
+#sign-up-nav {
+    color: black;
+}
+
+.form-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    background-color: #e9d985ff;
+    border: solid black 5px;
+    color: black;
+    width: 500px;
+    height: fit-content;
+}
+
+.form-div {
+    padding-bottom: 40px;
+}
+
+/** ######################################################### **/
+/** Party Table Formatting **/
+.table-container {
+    display: flex;
+    align-content: center;
+}
+
+.character-name {
+    width: 100%;
+}
+
+.party-table {
+    text-align: center;
+    border: 5px solid black;
+    margin-top: 20px;
+    padding: 1em 1em 0 1em;
+}
+
+.portrait {
+    height: 100px;
+    width: 100px;
+}
+
+.stats {
+    font-size: 1.2rem;
+}
+
+.hp {
+    color: red;
+    text-shadow: 2px 2px black;
+}
+
+.mp {
+    color: #2b30bd;
+    text-shadow: 2px 2px black;
+}
+
+.xp {
+    color: #08a045ff;
+    text-shadow: 2px 2px black;
+}
+
+/** ###################################################### **/
+/** Shop Table Formatting **/
+.shop-price {
+    width: 10%;
+}
+
+.shop-item {
+    width: 80%;
+}
+/** #################################################### **/
+/** Nav Styling **/
+
+.nav-bar {
+    display: flex;
+    position: relative;
+    bottom: 0;
+    font-size: .5em;
+    justify-content: space-around;
+    text-align: center;
+    padding: 10px;
+
+    background-color: #878786;
+    text-shadow: 1px 1px black;
+}
+
+.nav-link:hover {
+    text-shadow: 1px 1px #690500ff;
+}
+#nav-form {
+    height: 100%;
+}
+.nav-button {
+    height: 100%;
+    width: 100%;
+    background-color: #878786;
+    border: none;
+    color: #FFFFFF;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: bold;
+    font-size: 1em;
+
+    cursor: pointer;
+    text-shadow: 1px 1px black;
+    text-decoration: underline;
+}
+
+.nav-button:hover {
+    color: #690500ff;
+    text-shadow: 1px 1px #690500ff;
+}
+
+/** #################################################### **/
+/** Inventory Styling **/
+.inv-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.inv-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-top: 0;
+    top: 0;
+    background-color: #878786;
+    width: 80%;
+
+    border: solid black 5px;
+    text-shadow: 3px 3px black;
+}
+
+.inv-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.inv-display {
+    display: flex;
+    justify-content: center;
+    background-color: #690500ff;
+    border: solid black 5px;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+.item-head {
+    font-size: 1.1em;
+    text-align: center;
+    text-shadow: 2px 2px black;
+    padding: 5px 10px 5px 10px;
+}
+
+.item {
+    text-align: center;
+    text-shadow: 2px 2px black;
+    padding: 5px 10px 5px 10px;
+    font-size: 0.8em;
+}
+
+.item-name {
+    font-size: 0.85em;
+}
+
+.item-row {
+    border-bottom: solid black 2px;
+}
+
