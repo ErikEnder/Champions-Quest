@@ -9,6 +9,7 @@
 */
 
 /** Generic Styling CSS **/
+
 body {
     background-color: #3b413cff;
     margin: 0;
@@ -51,6 +52,7 @@ a:visited {
 
 /** ################################################### **/
 /** Slightly Generic Class Styling **/
+
 .info-container {
     display: flex;
     flex-direction: column;
@@ -87,6 +89,7 @@ a:visited {
 
 /** ############################################### **/
 /** Map Styling **/
+
 #map-page {
     display: flex;
     position: relative;
@@ -105,6 +108,7 @@ a:visited {
 /** ######################################## **/
 /** Submit Button CSS **/
 /** Styling sourced from https://getcssscan.com/css-buttons-examples **/
+
 .submit-button {
   appearance: button;
   background-color: #4f4d4d;
@@ -183,6 +187,7 @@ a:visited {
 
 /** #################################### **/
 /** Form Styling CSS **/
+
 .form-container {
     display: flex;
     justify-content: center;
@@ -226,6 +231,7 @@ a:visited {
 
 /** ######################################################### **/
 /** Party Table Formatting **/
+
 .table-container {
     display: flex;
     align-content: center;
@@ -269,6 +275,7 @@ a:visited {
 
 /** ###################################################### **/
 /** Shop Table Formatting **/
+
 .shop-price {
     width: 10%;
 }
@@ -344,6 +351,7 @@ a:visited {
 
 /** #################################################### **/
 /** Inventory Styling **/
+
 .inv-container {
     display: flex;
     flex-direction: column;

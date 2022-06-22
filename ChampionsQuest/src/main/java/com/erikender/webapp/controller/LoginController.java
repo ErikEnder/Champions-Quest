@@ -30,6 +30,7 @@ public class LoginController {
     @Autowired
     MyCharacterService characterService;
 
+    /** Maps the signup page **/
     @GetMapping("/signup")
     public String viewSignUp(Model model) {
         model.addAttribute("user", new User());
@@ -37,6 +38,15 @@ public class LoginController {
         return "signup";
     }
 
+    /** Takes in the user input from the signup form.
+     * Takes the base password and encrypts it with BCrypt, then saves it to the Database.
+     * Saves the user and assigns a new set of 4 default characters to them.
+     * Process the request using the User's email and unencrypted password
+     *
+     * @param request The servlet request for the User's authentication processing
+     * @param user The User object containing the information gathered from the Form
+     * @return Points the user back to the login page upon successful account creation
+     */
     @PostMapping("/process_signup")
     public String processUserSignup(HttpServletRequest request, User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -50,12 +60,15 @@ public class LoginController {
         return "login";
     }
 
+    /** Maps the login page **/
     @GetMapping("/login")
     public String viewLogin() {
 
         return "login";
     }
 
+    /** Takes the inputted email and password then passes them to the authentication method
+     * On successful authentication, logs the user in **/
     @PostMapping("/process_login")
     public String processUserLogin(HttpServletRequest request, User user) {
         String username = user.getEmail();
@@ -65,6 +78,7 @@ public class LoginController {
         return "map";
     }
 
+    /** If a logged in user presses the logout link, logs them out and returns them to the login page **/
     @GetMapping("/logout")
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -74,6 +88,7 @@ public class LoginController {
         return "redirect:/login?logout";
     }
 
+    /** Method handling authentication requests sent by Users attempting to login **/
     public void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
         try {
             request.login(username, password);

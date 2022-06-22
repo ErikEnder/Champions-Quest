@@ -6,17 +6,22 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
+/**
+ * Entity attached to Shop table.  Was initially going to be unique across players, but decided against it
+ * in the current implementation.
+ */
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 @Entity
 @Table(name = "shop")
 public class Shop {
 
+    // Only 1 shop currently.  ID will always be 1 as of now.
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int shop_id;
 
+    // Shop's name
     @Column(name = "name")
     private String name;
 
@@ -26,6 +31,7 @@ public class Shop {
         this.name = name;
     }
 
+    // Getters and setters
     public int getShop_id() {
         return shop_id;
     }

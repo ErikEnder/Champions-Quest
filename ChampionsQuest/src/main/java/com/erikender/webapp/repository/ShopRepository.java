@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/** Shop Repository.  No methods implemented atm. */
 @Repository
 public interface ShopRepository extends JpaRepository<Shop, Integer> {
 

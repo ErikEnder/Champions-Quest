@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -20,15 +21,10 @@ public class ItemTests {
     @Autowired
     private ItemRepository repo;
 
-    /**  @Query("SELECT i FROM Item i WHERE i.item_id = ?1")
-    Item findById(int item_id);
+    /*  @Query("SELECT i FROM Item i WHERE i.item_id = ?1")
+    Item findById(int item_id); */
 
-     @Query("SELECT i FROM Item i WHERE i.shop_id = ?1")
-     List<Item> findAllByShopId(int shop_id);
-
-     @Query("SELECT i FROM Item i WHERE i.name = ?1")
-     Item findByName(String name); **/
-
+    /** Test that checks to see that you can find an item by its ID**/
     @Test
     public void testFindById() {
         Item item = repo.findById(11);
@@ -40,6 +36,10 @@ public class ItemTests {
                 " Item Price: " + item.getPrice() + " Item Description: " + item.getDesc());
     }
 
+    /*   @Query("SELECT i FROM Item i WHERE i.shop_id = ?1")
+     List<Item> findAllByShopId(int shop_id);  */
+
+    /** Test that checks to see you can retrieve all of the items in a shop by the shop's ID **/
     @Test
     public void testFindAllByShop() {
         List<Item> shop = repo.findAllByShopId(1);
@@ -50,6 +50,10 @@ public class ItemTests {
         System.out.println("Shop Items: " + shop.toString());
     }
 
+    /* @Query("SELECT i FROM Item i WHERE i.name = ?1")
+     Item findByName(String name); */
+
+    /** Test that checks to see you can find an item by its name **/
     @Test
     public void testFindByName() {
         Item item = repo.findByName("Steel Sword");
@@ -57,5 +61,17 @@ public class ItemTests {
         assertThat(item).isNotNull();
 
         System.out.println("Item ID: " + item.getItem_id());
+    }
+
+    /** Test that checks to see you can access the items in the repo and assign them to a list for further use
+        Original method found in ItemService **/
+    @Test
+    public void testGetShopItems() {
+        List<Item> shopItems = new ArrayList<>();
+        repo.findAllByShopId(1).forEach(shopItems::add);
+
+        assertThat(shopItems).isNotNull();
+
+        System.out.println(shopItems);
     }
 }

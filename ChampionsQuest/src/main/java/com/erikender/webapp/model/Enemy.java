@@ -6,9 +6,9 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+/** Entity attached to Enemy data.  Not currently implemented in final build **/
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 @Entity
 @Table( name = "enemies" )
 public class Enemy {
@@ -17,15 +17,19 @@ public class Enemy {
 	@Column(name = "enemy_id")
 	private int enemy_id;
 
+	// Enemy's name
 	@Column(name = "name")
 	private String name;
 
+	// Enemy's health
 	@Column(name = "health")
 	private int health;
 
+	// Enemy's mana
 	@Column(name = "mana")
 	private int mana;
 
+	// Amount of XP the enemy gives
 	@Column(name = "xp")
 	private int xp;
 
@@ -37,6 +41,7 @@ public class Enemy {
 		this.xp = xp;
 	}
 
+	// Setters and getters
 	public int getEnemy_id() {
 		return enemy_id;
 	}

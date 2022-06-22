@@ -1,12 +1,12 @@
 package com.erikender.webapp.services;
 
-
 import com.erikender.webapp.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+/** Page defining basic user permissions and details in Spring Security **/
 public class MyUserDetails implements UserDetails {
 
     private User user;

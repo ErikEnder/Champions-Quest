@@ -6,9 +6,10 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+
+/** Entity attached to Item table.  Defines values for an Item object. **/
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 @Entity
 @Table(name = "items")
 public class Item {
@@ -18,21 +19,27 @@ public class Item {
 	@Column(name = "item_id")
 	private int item_id;
 
+	// ID of the shop an item belongs to.  Only one shop currently, so that is the default.
 	@Column(name = "shop_id")
 	private int shop_id;
 
+	// Item's name
 	@Column(name = "name")
 	private String name;
 
+	// Item's attack stat, if any
 	@Column(name = "attack")
 	private int attack;
 
+	// Item's defense stat, if any
 	@Column(name = "defense")
 	private int defense;
 
+	// Item's price
 	@Column(name = "price")
 	private int price;
 
+	// Short description of the item
 	@Column(name = "description")
 	private String desc;
 
@@ -45,6 +52,7 @@ public class Item {
 		this.desc = desc;
 	}
 
+	// Getters and setters
 	public int getItem_id() {
 		return item_id;
 	}

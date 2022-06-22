@@ -32,13 +32,15 @@ public class CampController {
     MyCharacterService characterService;
     @Autowired
     ItemService itemService;
-
     @Autowired
     InventoryService inventoryService;
 
 
+    /** Method maps Camp page and assigns attributes to the model for dynamic values via Thymeleaf **/
     @GetMapping("/camp")
     public String modelAndView(Model model) {
+
+        // This block assigns the individual characters
         model.addAttribute("characterOne",
                 characterService.findByName("Hero", userDetailsService.getLoggedId()));
         model.addAttribute("characterTwo",
@@ -48,24 +50,39 @@ public class CampController {
         model.addAttribute("characterFour",
                 characterService.findByName("Hound", userDetailsService.getLoggedId()));
 
+        // Creates a Form Data Transfer Object to properly grab values for adjustment
         FormDto dto = new FormDto();
+
+        // Adds DTO to the model
+        model.addAttribute("dto", dto);
+
+        // Gets the Main Character and the Companion Character based on their default names, as IDs are not entirely predictable
+        // based on which user is calling method
         dto.setHeroModel(characterService.findByName("Hero", userDetailsService.getLoggedId()).getModel());
         dto.setCompModel(characterService.findByName("Companion", userDetailsService.getLoggedId()).getModel());
 
-        model.addAttribute("dto", dto);
-
+        // Adds Shop to the model
         model.addAttribute("shop", itemService.getShopItems(1));
 
         return "camp";
     }
 
+    /** Calls the customizeCharacters function that will apply alterations to the characters based on values passed
+        from the HTML form
+     * @param dto The DTO passing values from HTML to Java
+     */
     @PostMapping("/customize_characters")
-    public String customizeCharacters(FormDto dto, Model model) {
+    public String customizeCharacters(FormDto dto) {
         characterService.alterCharacters(dto);
 
-        return modelAndView(model);
+        return "redirect:/camp";
     }
 
+    /** Calls the buyItem function that will perform calculations and append an item bought from the shop onto
+     * the player's inventory
+     *
+     * @param id The ID of the item being purchased by the player
+     */
     @PutMapping(value = "/camp/{id}")
     public String addItem(@PathVariable int id) {
         inventoryService.buyItem(id);

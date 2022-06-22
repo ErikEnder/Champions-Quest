@@ -35,13 +35,13 @@
                     </tr>
                     <tr class="underline-row">
                         <td>
-                            <!-- Character's model -->
+                            <!-- Hero's model -->
                             <p class="character-name" id="avatar-sheet" th:text="${characterOne.alteredName}"> </p>
                             <img th:src="@{'resources/images/animations/' + ${characterOne.model} + '.gif'}" class="portrait" alt="Avatar">
 
                         </td>
 
-                        <!-- Character's stats -->
+                        <!-- Hero's stats -->
                         <td class="stats">
                             <span>LVL: </span><span th:text="${characterOne.level}"></span><br>
                             <span class="hp">HP: </span><span class="hp" th:text="${characterOne.health}"><br></span>
@@ -51,9 +51,11 @@
                     </tr>
                     <tr class="underline-row">
                         <td>
+                            <!-- Companion's model -->
                             <p  class="character-name" id="friend-sheet" th:text="${characterTwo.alteredName}"> </p>
                             <img th:src="@{'resources/images/animations/' + ${characterTwo.model} + '.gif'}" class="portrait" alt="Companion">
                         </td>
+                        <!-- Companion's stats -->
                         <td class="stats">
                             <span>LVL: </span><span th:text="${characterTwo.level}"></span><br>
                             <span class="hp">HP: </span><span class="hp" th:text="${characterTwo.health}"><br></span>
@@ -63,9 +65,11 @@
                     </tr>
                     <tr class="underline-row">
                         <td>
+                            <!-- Wizard's model -->
                             <p  class="character-name" id="wizard-sheet" th:text="${characterThree.alteredName}"> </p>
                             <img th:src="@{resources/images/animations/modelWizard.gif}" class="portrait" alt="Wizard">
                         </td>
+                        <!-- Wizard's stats -->
                         <td class="stats">
                             <span>LVL: </span><span th:text="${characterThree.level}"></span><br>
                             <span class="hp">HP: </span><span class="hp" th:text="${characterThree.health}"><br></span>
@@ -75,9 +79,11 @@
                     </tr>
                     <tr class="underline-row">
                         <td>
+                            <!-- Dog's Model-->
                             <p  class="character-name" id="dog-sheet" th:text="${characterFour.alteredName}"> </p>
                             <img th:src="@{resources/images/animations/modelHound.gif}" class="portrait" alt="Dog">
                         </td>
+                        <!-- Dog's stats -->
                         <td class="stats">
                             <span>LVL: </span><span th:text="${characterFour.level}"></span><br>
                             <span class="hp">HP: </span><span class="hp" th:text="${characterFour.health}"><br></span>
@@ -88,9 +94,12 @@
                 </table>
             </div>
             <!-- End of Table HTML -->
+
             <!-- Beginning of Form HTML -->
             <div class="form-holder">
+                <!-- Form calls the customize_characters PostMap which calls the alterCharacters method -->
                 <form class="form-style" th:action="@{/customize_characters}" method="post"
+                      <!-- DTO object defined -->
                       th:object="${dto}" style="padding-top: 20px;">
                     <!-- Div containing character rename inputs -->
                     <div class="center">
@@ -98,7 +107,7 @@
                         <input type="text" name="avatar-name" id="avatar-name" th:field="*{heroAN}" th:placeholder="${characterOne.alteredName}">
                     </div>
                     <div class="center">
-                        <label for="friend-name">Name your best friend: </label>
+                        <label for="friend-name">Name your companion: </label>
                         <input type="text" name="friend-name" id="friend-name" th:field="*{compAN}" th:placeholder="${characterTwo.alteredName}">
                     </div>
                     <div class="center">
@@ -129,12 +138,12 @@
                         <input type="radio" id="dogB" name="friend_model" th:field="*{compModel}" th:value="modelHound">
                         <label for="dogB">Four</label>
                     </div>
-                    <!-- Div containing button for calling customizeParty() function, eventhandler added in customize.js-->
+
                     <div class="form-div">
                         <button type="submit" class="submit-button" id="customize">Rewrite History!</button>
                     </div>
-                    
                 </form>
+                <!-- End of Form HTML -->
             </div>
             <div>
                 <div class="info-container">
@@ -143,24 +152,28 @@
                         <p>Sprites sourced from: <br>
                             <a href="https://opengameart.org/content/sorlo-ultimate-smash-friends">Wizard</a>
                             <a href="https://opengameart.org/content/animated-warrior">Knight</a>
-                            <a href="https://opengameart.org/content/lpc-wolf-animation">Wolf</a></p>
+                            <a href="https://opengameart.org/content/lpc-wolf-animation">Wolf</a>
+                        </p>
                     </div>
                     <div class="quest-dialogue">
                         <h2>Shop</h2>
-                        <!-- Table that gets generated via createShop function -->
+                        <!-- Shop containing values from Shop table -->
                         <table>
                             <tr>
                                 <th>Price</th>
                                 <th>Item</th>
                             </tr>
+                            <!-- For Loop that iterates through every item in Shop and populates the table -->
                             <tr th:each = "item: ${shop}">
                                 <td class="shop-price" th:text = "${item.price} + 'g'"></td>
                                 <td class="shop-item" th:text = "${item.name}"></td>
-                                <td><form action="#" th:action="@{'/camp/{id}'(id=${item.item_id})}" th:method="put" >
+                                <td>
+                                    <form action="#" th:action="@{'/camp/{id}'(id=${item.item_id})}" th:method="put" >
                                     <button type="submit" class="submit-button buy-button">
                                         Buy
                                     </button>
-                                </form></td>
+                                </form>
+                                </td>
                             </tr>
                         </table>
 

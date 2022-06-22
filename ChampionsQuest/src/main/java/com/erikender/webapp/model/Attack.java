@@ -6,9 +6,10 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+
+/** Entity attached to Character/Enemy attacks.  Not currently implemented in the final build **/
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 @Entity
 @Table(name = "attacks")
 public class Attack {
@@ -17,15 +18,19 @@ public class Attack {
 	@Column(name = "attack_id")
 	private int attack_id;
 
+	// Attack name
 	@Column(name = "name")
 	private String name;
 
+	// Attack's damage, if any
 	@Column(name = "damage")
 	private int damage;
 
+	// Attack's healing, if any
 	@Column(name = "healing")
 	private int healing;
 
+	// Attack's mana cost
 	@Column(name = "cost")
 	private int cost;
 	
@@ -37,6 +42,7 @@ public class Attack {
 		this.cost = cost;
 	}
 
+	// Setters and getters
 	public int getAttack_id() {
 		return attack_id;
 	}

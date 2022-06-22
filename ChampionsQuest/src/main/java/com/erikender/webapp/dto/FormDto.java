@@ -3,17 +3,22 @@ package com.erikender.webapp.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class acts as a Data Transfer Object for the Form from the Camp page containing any potential character
+ * alterations the User may have chosen.
+ */
 public class FormDto {
-    private String heroAN;
-    private String compAN;
-    private String dogAN;
+    private String heroAN; // Hero Altered Name value
+    private String compAN; // Companion Altered Name value
+    private String dogAN; // Dog altered name value
 
-    private String heroModel;
-    private String compModel;
+    private String heroModel; // Hero's model value
+    private String compModel; // Companion's model value
 
-    private List<String> values;
+    private List<String> values; // List that will contain the values for easier handling
 
     public FormDto() {
+        // Generates 5 slots in the values list
         values = new ArrayList<String>();
         values.add("");
         values.add("");
@@ -22,6 +27,7 @@ public class FormDto {
         values.add("");
     }
 
+    // Constructor sets each value into their appropriate slot
     public FormDto(String heroAN, String compAN, String dogAN, String heroModel, String compModel) {
         values.set(0, heroAN);
         values.set(1, compAN);
@@ -30,6 +36,7 @@ public class FormDto {
         values.set(4, compModel);
     }
 
+    // Setters and getters
     public String getHeroAN() {
         return values.get(0);
     }

@@ -5,6 +5,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/** This class serves as the composite key for the Inventory entity. **/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

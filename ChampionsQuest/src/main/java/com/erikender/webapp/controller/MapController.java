@@ -15,6 +15,7 @@ public class MapController {
     @Autowired
     MyCharacterService characterService;
 
+    /** Maps the...map page. Also assigns the Hero character to the model to display a unique name on the page **/
     @GetMapping("/map")
     public String modelAndView(Model model) {
         model.addAttribute("characterOne",

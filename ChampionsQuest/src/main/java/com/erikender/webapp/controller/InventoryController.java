@@ -18,6 +18,7 @@ public class InventoryController {
     @Autowired
     InventoryService inventoryService;
 
+    /** Sets up basic mapping/attributes of Inventory page **/
     @GetMapping("/inventory")
     public String inventoryPage(Model model) {
         model.addAttribute("characterOne",
@@ -27,10 +28,11 @@ public class InventoryController {
         return "inventory";
     }
 
+    /** Calls the sellItem function that will perform calculations and remove an item from the Player's inventory **/
     @RequestMapping(value = "/inventory/delete/{id}", method = RequestMethod.DELETE)
-    public String deleteItem(@PathVariable int id, Model model) {
+    public String deleteItem(@PathVariable int id) {
         inventoryService.sellItem(id);
 
-        return inventoryPage(model);
+        return "redirect:/inventory";
     }
 }

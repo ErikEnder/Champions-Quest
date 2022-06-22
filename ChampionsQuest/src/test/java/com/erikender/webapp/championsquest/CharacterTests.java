@@ -21,25 +21,7 @@ public class CharacterTests {
     @Autowired
     private MyCharacterRepository repo;
 
-    @Autowired
-    private TestEntityManager entityManager;
-
-    @Test
-    public void testAssignCharacter() {
-        User user = new User();
-        user.setId(10);
-
-        //  int charId, int user_id, String name, String model, int health, int mana, int xp, int level)
-
-        MyCharacter newCharAssign = new MyCharacter(user.getId(), "Test", "Knight", 100, 50, 0, 1, "Test");
-
-        MyCharacter savedChar = repo.save(newCharAssign);
-
-        MyCharacter existChar = entityManager.find(MyCharacter.class, savedChar.getChar_id());
-
-        assertThat(existChar.getUser_id()).isEqualTo(user.getId());
-    }
-
+    /** Testing repo method to get a character by their ID **/
     @Test
     public void testFindCharById() {
         int id = 1;
@@ -51,31 +33,24 @@ public class CharacterTests {
         System.out.println("Char ID: " + myCharacter.getChar_id() + " User ID: " +  myCharacter.getUser_id() + " Char Name: " + myCharacter.getName());
     }
 
+    /** Testing service method to assign characters to a new user **/
     @Test
     public void testAssignCharacters() {
         // int user_id, String email, String password, String firstName, String lastName, String inGameName
         User user = new User(420, "dummy69@gmail.com", "password", "Dumb", "My", "Catdog");
-        MyCharacter baseOne = repo.findById(1);
 
-        int id = user.getId();
         String ign = user.getInGameName();
 
         System.out.println(ign);
 
         //  int charId, int user_id, String name, String model, int health, int mana, int xp, int level)
-        MyCharacter charOne = new MyCharacter(31, ign, "Knight", 100, 50, 0, 1, "Hero");
+        MyCharacter charOne = new MyCharacter(user.getId(), ign, "Knight", 100, 50, 0, 1, "Hero");
 
-        repo.save(charOne);
+        assertThat(charOne.getUser_id()).isEqualTo(user.getId());
 
     }
 
-    @Test
-    public void testGetHighestId() {
-        int id = repo.getHighestId();
-
-        System.out.println(id);
-    }
-
+    /** Testing repo method to find a character by their default name **/
     @Test
     public void testFindByName() {
         String name = "Hero";
