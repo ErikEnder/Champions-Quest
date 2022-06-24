@@ -1,5 +1,7 @@
 package com.erikender.webapp.controller;
 
+import com.erikender.webapp.exceptions.SQLIntegrityConstraintViolationException;
+import com.erikender.webapp.exceptions.SQLSyntaxErrorException;
 import com.erikender.webapp.model.User;
 import com.erikender.webapp.repository.MyCharacterRepository;
 import com.erikender.webapp.repository.UserRepository;
@@ -49,6 +51,9 @@ public class LoginController {
      */
     @PostMapping("/process_signup")
     public String processUserSignup(HttpServletRequest request, User user) {
+        if (userRepository.findByEmail(user.getEmail()) != null)throw new SQLIntegrityConstraintViolationException();
+        if (user.getEmail().length() > 50)throw new SQLSyntaxErrorException();
+        if (user.getFirstName().length() > 30 || user.getLastName().length() > 30 || user.getInGameName().length() > 30)throw new SQLSyntaxErrorException();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String basePassword = user.getPassword();
         String encodedPassword = encoder.encode(user.getPassword());

@@ -11,18 +11,22 @@
     <link rel="stylesheet" type="text/css" th:href="@{/resources/styles/styles.css}">
 </head>
 <body>
+<!-- Flex container for inventory body -->
 <div class="inv-container">
     <div class="inv-center">
+        <!-- Displays main character's name and gold -->
         <div class="inv-header">
             <h1 th:text="${characterOne.alteredName} + '\'s Inventory'"></h1>
             <p th:text="'Your Total Gold: ' + ${characterOne.gold} + 'g'"></p>
         </div>
     </div>
-
+    <!-- Centers inventory -->
     <div class="inv-center">
         <div>
+            <!-- Displays the inventory table -->
             <table class="inv-display">
                 <tbody class="inv-body">
+                <!-- Class underlines each table row to separate them -->
                     <tr class="underline-row">
                         <th class="item-head">Item</th>
                         <th class="item-head">Attack</th>
@@ -30,6 +34,7 @@
                         <th class="item-head">Value</th>
                         <th class="item-head">Description</th>
                     </tr>
+                    <!-- Populates table with each item currently in the user's inventory -->
                     <tr class="underline-row" th:each = "item: ${inventory}">
                         <td class="item item-name" th:text = "${item.name}"></td>
                         <td class="item" th:text = "${item.attack}"></td>
@@ -46,6 +51,7 @@
             </table>
         </div>
     </div>
+    <!-- Navigation bar -->
     <div class="inventory-nav nav-bar">
         <div><a th:href="@{/map}" class="nav-link">View Map</a></div>
         <div><a th:href="@{/camp}" class="nav-link">Return to Camp</a></div>

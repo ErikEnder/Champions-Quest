@@ -1,6 +1,7 @@
 package com.erikender.webapp.services;
 
 import com.erikender.webapp.dto.FormDto;
+import com.erikender.webapp.exceptions.SQLSyntaxErrorException;
 import com.erikender.webapp.model.Item;
 import com.erikender.webapp.model.MyCharacter;
 import com.erikender.webapp.model.User;
@@ -67,8 +68,6 @@ public class MyCharacterService {
      * @param dto Data Transfer Object for HTML Form
      */
     public void alterCharacters(FormDto dto) {
-        System.out.println("I have been called properly.");
-
         // Finds the characters assigned to the current user
         MyCharacter charOne = findByName("Hero", userDetailsService.getLoggedId());
         MyCharacter charTwo = findByName("Companion", userDetailsService.getLoggedId());
@@ -79,6 +78,7 @@ public class MyCharacterService {
         String altNameTwo = dto.getCompAN();
         String altNameFour = dto.getDogAN();
 
+        if (altNameOne.length() > 30 || altNameTwo.length() > 30 || altNameFour.length() > 30)throw new SQLSyntaxErrorException();
         // Sets the character models from DTO input
         String modelOne = dto.getHeroModel();
         String modelTwo = dto.getCompModel();
@@ -106,19 +106,25 @@ public class MyCharacterService {
 
         // If character's altered name field is unchanged from default, no changes.
         if (newName == null || newName.equals("") || newName.trim().equals("")) {
-            System.out.println("Name unchanged.");
+            System.out.println("Name: " + character.getAlteredName() + " - STATUS: Unchanged.");
         }
         else {
             // Otherwise change their altered name
+            System.out.print("Name: " + character.getAlteredName() + " - Changed to: ");
             character.setAlteredName(newName);
+            System.out.print(character.getAlteredName());
+            System.out.println();
         }
 
         // Same thing as altered name, just with their model
         if (newModel == null || newModel.equals("") || newModel.trim().equals("")) {
-            System.out.println("Model unchanged.");
+            System.out.println("Model: " + character.getModel() + " - STATUS: Unchanged.");
         }
         else {
+            System.out.print("Model: " + character.getModel() + " - Changed to: ");
             character.setModel(newModel);
+            System.out.print(character.getModel());
+            System.out.println();
         }
         return character;
     }
