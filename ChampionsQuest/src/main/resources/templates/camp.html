@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" th:href="@{/resources/styles/styles.css}">
 
         <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
-        <script th:src="@{resources/scripts/customize.js}" async defer></script>
+        <script th:src="@{/resources/scripts/loginchecker.js}" async defer></script>
 
         <!-- Sprites taken from: 
         https://opengameart.org/content/sorlo-ultimate-smash-friends: Wizard
@@ -100,6 +100,10 @@
                 <!-- Form calls the customize_characters PostMap which calls the alterCharacters method -->
                 <form class="form-style" th:action="@{/customize_characters}" method="post"
                       th:object="${dto}" style="padding-top: 20px;">
+                    <div>
+                        <h2>Customize Characters</h2>
+                        <p class="failed-ver"></p>
+                    </div>
                     <!-- Div containing character rename inputs -->
                     <div class="center">
                         <label for="avatar-name">Name your character: </label>

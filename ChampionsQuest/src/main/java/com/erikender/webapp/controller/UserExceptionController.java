@@ -18,14 +18,4 @@ public class UserExceptionController {
     public String exception(SQLIntegrityConstraintViolationException exception) {
         return "redirect:/registerfailed";
     }
-
-    /**
-     * Method that throws exception when user input doesn't fit within the database's ruleset
-     * @param exception
-     * @return Page telling the user why their input doesn't work.
-     */
-    @ExceptionHandler(value = SQLSyntaxErrorException.class)
-    public String exception(SQLSyntaxErrorException exception) {
-        return "redirect:/register";
-    }
 }

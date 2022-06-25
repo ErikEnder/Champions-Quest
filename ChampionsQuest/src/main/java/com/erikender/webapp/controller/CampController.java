@@ -1,6 +1,7 @@
 package com.erikender.webapp.controller;
 
 import com.erikender.webapp.dto.FormDto;
+import com.erikender.webapp.exceptions.SQLSyntaxErrorException;
 import com.erikender.webapp.repository.MyCharacterRepository;
 import com.erikender.webapp.repository.ShopRepository;
 import com.erikender.webapp.repository.UserRepository;
@@ -37,7 +38,7 @@ public class CampController {
 
 
     /** Method maps Camp page and assigns attributes to the model for dynamic values via Thymeleaf **/
-    @GetMapping("/camp")
+    @RequestMapping(value={"/camp", "/charnameerror"})
     public String modelAndView(Model model) {
 
         // This block assigns the individual characters
@@ -88,6 +89,16 @@ public class CampController {
         inventoryService.buyItem(id);
 
         return "redirect:/camp";
+    }
+
+    /**
+     * Method that throws exception when user input doesn't fit within the database's ruleset
+     * @param exception
+     * @return Page telling the user why their input doesn't work.
+     */
+    @ExceptionHandler(value = SQLSyntaxErrorException.class)
+    public String exception(SQLSyntaxErrorException exception) {
+        return "redirect:/charnameerror";
     }
 
 }

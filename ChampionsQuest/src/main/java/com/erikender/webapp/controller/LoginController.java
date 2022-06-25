@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,7 @@ public class LoginController {
     MyCharacterService characterService;
 
     /** Maps the signup page **/
-    @RequestMapping(value={"/signup", "/registerfailed"})
+    @RequestMapping(value={"/signup", "/registerfailed", "/invalidinfo"})
     public String viewSignUp(Model model) {
         model.addAttribute("user", new User());
 
@@ -101,6 +102,16 @@ public class LoginController {
         } catch (ServletException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Method that throws exception when user input doesn't fit within the database's ruleset
+     * @param exception
+     * @return Page telling the user why their input doesn't work.
+     */
+    @ExceptionHandler(value = SQLSyntaxErrorException.class)
+    public String exception(SQLSyntaxErrorException exception) {
+        return "redirect:/invalidinfo";
     }
 
 }
