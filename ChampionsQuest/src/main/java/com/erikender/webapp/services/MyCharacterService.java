@@ -42,7 +42,7 @@ public class MyCharacterService {
             newCharOne.setAlteredName("Hero");
         }
 
-        newCharOne.setGold(10);
+        newCharOne.setGold(50);
 
         // Save newly created characters
         repo.save(newCharOne);

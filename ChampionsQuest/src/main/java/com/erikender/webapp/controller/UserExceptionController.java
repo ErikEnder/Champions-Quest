@@ -9,13 +9,23 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class UserExceptionController {
+    /**
+     * Method that throws exception when user enters non-unique e-mail address on sign up
+     * @param exception The exception
+     * @return Page telling the user why their input doesn't work.
+     */
     @ExceptionHandler(value = SQLIntegrityConstraintViolationException.class)
-    public ResponseEntity<Object> exception(SQLIntegrityConstraintViolationException exception) {
-        return new ResponseEntity<>("Email already exists!", HttpStatus.INTERNAL_SERVER_ERROR);
+    public String exception(SQLIntegrityConstraintViolationException exception) {
+        return "redirect:/registerfailed";
     }
 
+    /**
+     * Method that throws exception when user input doesn't fit within the database's ruleset
+     * @param exception
+     * @return Page telling the user why their input doesn't work.
+     */
     @ExceptionHandler(value = SQLSyntaxErrorException.class)
-    public ResponseEntity<Object> exception(SQLSyntaxErrorException exception) {
-        return new ResponseEntity<>("E-mail must be 50 characters or less, Names must be 30 characters or less.", HttpStatus.INTERNAL_SERVER_ERROR);
+    public String exception(SQLSyntaxErrorException exception) {
+        return "redirect:/register";
     }
 }

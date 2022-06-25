@@ -12,6 +12,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" th:src="@{/resources/scripts/loginchecker.js}"></script>
+
         <link rel="stylesheet" type="text/css" th:href="@{/resources/styles/styles.css}">
     </head>
     <body>
@@ -26,6 +29,7 @@
                 <form th:action="@{/process_signup}" method="post" class="form-style" id="login-form" th:object="${user}">
                     <div>
                         <h2>Register Here!</h2>
+                        <p class="failed-ver"></p>
                     </div>
                     <div class="form-div">
                         <!-- Input accepts user email to parse for ReGex -->

@@ -410,3 +410,9 @@ a:visited {
     border-bottom: solid black 2px;
 }
 
+/** #################################################### **/
+/** MISC **/
+.failed-ver {
+    font-size: .7em;
+    color: #690500ff;
+}

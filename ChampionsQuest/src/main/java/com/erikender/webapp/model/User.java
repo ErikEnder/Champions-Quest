@@ -50,8 +50,7 @@ public class User {
 	)
 	private List<Item> playerItems = new ArrayList<>();
 
-	public User (int id, String email, String password, String firstName, String lastName, String inGameName) {
-		this.id = id;
+	public User (String email, String password, String firstName, String lastName, String inGameName) {
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
