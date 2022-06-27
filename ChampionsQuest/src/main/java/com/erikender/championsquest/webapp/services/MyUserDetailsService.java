@@ -1,7 +1,7 @@
 package com.erikender.championsquest.webapp.services;
 
-import com.erikender.championsquest.webapp.repository.UserRepository;
 import com.erikender.championsquest.webapp.model.User;
+import com.erikender.championsquest.webapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

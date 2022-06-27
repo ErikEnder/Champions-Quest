@@ -1,10 +1,10 @@
 package com.erikender.championsquest.webapp.controller;
 
-import com.erikender.championsquest.webapp.repository.MyCharacterRepository;
-import com.erikender.championsquest.webapp.repository.UserRepository;
 import com.erikender.championsquest.webapp.exceptions.SQLIntegrityConstraintViolationException;
 import com.erikender.championsquest.webapp.exceptions.SQLSyntaxErrorException;
 import com.erikender.championsquest.webapp.model.User;
+import com.erikender.championsquest.webapp.repository.MyCharacterRepository;
+import com.erikender.championsquest.webapp.repository.UserRepository;
 import com.erikender.championsquest.webapp.services.MyCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

@@ -9,7 +9,7 @@ import java.util.Collection;
 /** Page defining basic user permissions and details in Spring Security **/
 public class MyUserDetails implements UserDetails {
 
-    private User user;
+    private final User user;
 
     public MyUserDetails(User user) {
         this.user = user;

@@ -1,9 +1,10 @@
 package com.erikender.championsquest.webapp.model;
 
-import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class User {
 				joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "item_id")
 	)
-	private List<Item> playerItems = new ArrayList<>();
+	private final List<Item> playerItems = new ArrayList<>();
 
 	public User (String email, String password, String firstName, String lastName, String inGameName) {
 		this.email = email;

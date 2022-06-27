@@ -46,7 +46,7 @@ public class ItemRepoTests {
         assertThat(shop).isNotNull();
 
         System.out.println("Shop Size: " + shop.size());
-        System.out.println("Shop Items: " + shop.toString());
+        System.out.println("Shop Items: " + shop);
     }
 
     /* @Query("SELECT i FROM Item i WHERE i.name = ?1")

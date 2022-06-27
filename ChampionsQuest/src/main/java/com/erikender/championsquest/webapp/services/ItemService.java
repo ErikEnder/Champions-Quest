@@ -1,7 +1,7 @@
 package com.erikender.championsquest.webapp.services;
 
-import com.erikender.championsquest.webapp.repository.ItemRepository;
 import com.erikender.championsquest.webapp.model.Item;
+import com.erikender.championsquest.webapp.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

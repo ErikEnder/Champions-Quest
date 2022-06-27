@@ -1,10 +1,10 @@
 package com.erikender.championsquest.webapp.model.notimplemented;
 
-import javax.persistence.*;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
 
 /** Entity attached to Enemy data.  Not currently implemented in final build **/
 @NoArgsConstructor

@@ -1,11 +1,11 @@
 package com.erikender.championsquest.webapp.services;
 
-import com.erikender.championsquest.webapp.repository.MyCharacterRepository;
 import com.erikender.championsquest.webapp.dto.FormDto;
 import com.erikender.championsquest.webapp.exceptions.SQLSyntaxErrorException;
 import com.erikender.championsquest.webapp.model.Item;
 import com.erikender.championsquest.webapp.model.MyCharacter;
 import com.erikender.championsquest.webapp.model.User;
+import com.erikender.championsquest.webapp.repository.MyCharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

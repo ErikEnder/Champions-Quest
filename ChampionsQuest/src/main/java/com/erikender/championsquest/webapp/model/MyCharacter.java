@@ -1,10 +1,10 @@
 package com.erikender.championsquest.webapp.model;
 
-import javax.persistence.*;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
 
 /**
  * Entity connected to the Characters table.  Contains values for each individual character.
